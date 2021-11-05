@@ -1,17 +1,143 @@
-<div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">Command</a>
+<div *ngIf="this.router.url === '/users'">
+  
+  <nav  class="navbar navbar-expand-lg navbar-dark">
+    <img src="assets/img/logo/logo.svg" alt="Logo" />
+    
     <div class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a routerLink="users" class="nav-link">Users</a>
+        <a routerLink="/" class="nav-link" style="color:black" ><mat-icon>home</mat-icon></a>
       </li>
       <li class="nav-item">
-        <a routerLink="add" class="nav-link">Add</a>
+        <a routerLink="users" class="nav-link" style="color:black" ><mat-icon>supervisor_account</mat-icon></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add" class="nav-link" style="color:black"><mat-icon>add_shopping_cart</mat-icon></a>
       </li>
     </div>
   </nav>
 
-  <div class="container mt-3">
-    <router-outlet></router-outlet>
-  </div>
+ 
 </div>
+<div *ngIf="this.router.url === '/users/'">
+  
+  <nav  class="navbar navbar-expand-lg navbar-dark ">
+    <img src="assets/img/logo/logo.svg" alt="Logo" />
+    
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link" style="color:black"><mat-icon>home</mat-icon></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="users" class="nav-link" style="color:black"><mat-icon>supervisor_account</mat-icon></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add" class="nav-link" style="color:black"><mat-icon>add_shopping_cart</mat-icon></a>
+      </li>
+    </div>
+  </nav>
+
+ 
+</div>
+
+
+<div *ngIf="this.router.url === '/add'">
+  
+  <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="assets/img/logo/logo.svg" alt="Logo" />
+    
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/" class="nav-link"><mat-icon>home</mat-icon></a>
+      </li>
+      
+    </div>
+  </nav>
+
+ 
+</div>
+<div id="app" *ngIf="this.router.url === '/register'">
+  <nav class="navbar navbar-expand navbar-dark ">
+    <a href="#" class="navbar-brand"></a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/" class="nav-link" routerLink="">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin" style="color:black">Admin Board</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="mod" style="color:black">Moderator Board</a>
+      </li>
+      <li class="nav-item">
+        <a href="/add" class="nav-link" *ngIf="isLoggedIn" routerLink="add" style="color:black">Command</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register" style="color:black">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login" style="color:black">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()" style="color:black"><mat-icon>power_settings_new</mat-icon></a>
+      </li>
+    </ul>
+  </nav>
+
+  </div>
+ 
+  <div id="app" *ngIf="this.router.url === '/login'">
+    <nav class="navbar navbar-expand navbar-dark ">
+      <a href="#" class="navbar-brand"></a>
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item">
+          <a href="/home" class="nav-link" routerLink="home" style="color:black">Home </a>
+        </li>
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a href="/admin" class="nav-link" routerLink="admin" style="color:black">Admin Board</a>
+        </li>
+        <li class="nav-item" *ngIf="showModeratorBoard">
+          <a href="/mod" class="nav-link" routerLink="mod" style="color:black">Moderator Board</a>
+        </li>
+        
+        <li class="nav-item" *ngIf="showAdminBoard">
+          <a routerLink="users" class="nav-link" style="color:black">List Command</a>
+        </li>
+        <li class="nav-item" >
+          <a routerLink="add" class="nav-link" style="color:black">Command</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+        <li class="nav-item">
+          <a href="/register" class="nav-link" routerLink="register" style="color:black">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login" style="color:black">Login</a>
+        </li>
+      </ul>
+  
+      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile" style="color:black">{{ username }}</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()" style="color:black"><mat-icon>power_settings_new</mat-icon></a>
+        </li>
+      </ul>
+    </nav>
+  
+    </div>
+   
+ <div class="container mt-3">
+    <router-outlet></router-outlet>
+   
+  </div>

@@ -66,5 +66,26 @@ export class UsersListComponent implements OnInit {
             console.log(error);
           });
   }
+  exporToExcel(){
+    this.userService.exporToExcel().subscribe(x =>{
+      const blob = new Blob([x], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.ms-excel'});
+
+      if (window.navigator && window.navigator.msSaveOrOpenBlob){
+         window.navigator.msSaveOrOpenBlob(blob);
+         return;
+    }
+    const data = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = data;
+    link.download = 'commands.xlsx';
+    link.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+      
+    setTimeout(function(){
+      window.URL.revokeObjectURL(data);
+      link.remove();
+    },100);
+  });
+
   
+} 
 }

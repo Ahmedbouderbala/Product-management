@@ -1,3 +1,4 @@
+
 <div>
     <div *ngIf="currentUser.id" class="edit-form">
       <h4>Command</h4>
@@ -34,13 +35,17 @@
           </div>
           <div class="form-group">
             <label for="produit">Product</label>
-            <input
+            <select
               type="text"
               class="form-control"
               id="name"
               [(ngModel)]="currentUser.produit"
               name="produit"
-            />
+            >
+            <option>Computer</option>
+            <option>Tv</option>
+            <option>Phone</option>
+            </select>
           </div>
   
         <div class="form-group">
@@ -54,18 +59,18 @@
         *ngIf="currentUser.published"
         (click)="updatePublished(false)"
       >
-        UnPublish
+      <mat-icon>close</mat-icon>
       </button>
       <button
         *ngIf="!currentUser.published"
         class="badge badge-primary mr-2"
         (click)="updatePublished(true)"
       >
-        Publish
+      <mat-icon>check</mat-icon>
       </button>
   
       <button class="badge badge-danger mr-2" (click)="deleteUser()">
-        Delete
+        <mat-icon>delete</mat-icon>
       </button>
   
       <button
@@ -73,7 +78,7 @@
         class="badge badge-success mb-2"
         (click)="updateUser()"
       >
-        Update
+      <mat-icon>update</mat-icon>
       </button>
       <p>{{ message }}</p>
     </div>

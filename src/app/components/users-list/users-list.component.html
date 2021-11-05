@@ -1,3 +1,4 @@
+
 <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
@@ -12,12 +13,15 @@
             class="btn btn-outline-secondary"
             type="button"
             (click)="searchName()"
+            mat-mini-fab
           >
-            Search
+          <mat-icon>search</mat-icon>
           </button>
         </div>
       </div>
     </div>
+    <a mat-mini-fab class="btn btn-info btn-lg" (click)="exporToExcel()">
+      <mat-icon>save_alt</mat-icon></a>
     <div class="col-md-6">
       <h4>Command List</h4>
       <ul class="list-group">
@@ -58,8 +62,8 @@
           {{ currentUser.published ? "Published" : "Pending" }}
         </div>
   
-        <a class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
-          Edit
+        <a mat-mini-fab class="badge badge-warning" routerLink="/users/{{ currentUser.id }}">
+          <mat-icon>edit</mat-icon>
         </a>
       </div>
   
